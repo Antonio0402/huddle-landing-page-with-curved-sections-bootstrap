@@ -1,0 +1,30 @@
+@use '../abstract/' as *;
+
+body {
+  height: 100%;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+@each $key, $val in $custom-text {
+  $font-size: map-get($val, "font-size");
+  $line-height: map-get($val, "line-height");
+  .text-#{$key} {
+    font-size: var(--#{$font-size});  
+    line-height: $line-height;
+  }
+}

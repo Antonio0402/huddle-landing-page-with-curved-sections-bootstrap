@@ -1,0 +1,27 @@
+{
+  "name": "huddle-landing-page-with-curved-sections-master",
+  "version": "1.0.0",
+  "description": "![Header/intro section for the Huddle landing page with curved sections](./design/desktop-preview.jpg)",
+  "main": "index.js",
+  "scripts": {
+    "css-lint": "stylelint scss/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^10.4.13",
+    "cssnano": "^5.1.14",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-purgecss": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "postcss": "^8.4.19",
+    "sass": "^1.56.1",
+    "stylelint": "^14.16.0",
+    "stylelint-config-twbs-bootstrap": "^7.0.0"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}

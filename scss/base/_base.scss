@@ -1,0 +1,13 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+

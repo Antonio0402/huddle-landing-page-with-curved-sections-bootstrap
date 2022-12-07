@@ -1,0 +1,116 @@
+@import "../../node_modules/bootstrap/scss/functions";
+
+// Toggle global options
+$enable-gradients: true;
+$enable-shadows: true;
+$enable-negative-margins: true;
+$line-height-md: 1.65;
+
+
+/* Theme colors */
+
+$pink: rgb(255, 82, 191);
+$light-pink: rgb(255, 143, 216);
+$light-red: rgb(255, 66, 66);
+
+$very-dark-cyan: rgb(0, 37, 46);
+$very-pale-blue: rgb(245, 250, 255);
+
+$primary: $pink;
+$accent: $light-pink;
+$secondary: $light-red;
+$dark: $very-dark-cyan;
+$light: $very-pale-blue;
+
+$custom-colors: (
+  "primary": $primary,
+  "accent": $accent,
+  "secondary": $secondary,
+  "dark": $dark,
+  "light": $light,
+);
+
+/* Tracking */
+
+$tracking: (
+  "tightest": -0.015em,
+  "tighter": -0.01em,
+  "tight": -0.005em,
+  "normal": 0em,
+  "wide": 0.01em,
+  "wider": 0.03em,
+  "widest": 0.05em,
+) !default;
+
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import ".../../node_modules/bootstrap/scss/root";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "color": map-merge(
+      map-get($utilities, "color"), 
+      (values: map-merge(
+          map-get(map-get($utilities, "color"), "values"), (
+            $custom-colors
+          ),
+        ),
+      ),
+    ),
+    "line-height": map-merge(
+      map-get($utilities, "line-height"),
+      (values: map-merge(
+          map-get(map-get($utilities, "line-height"), "values"), (
+            md: $line-height-md,
+          ),
+        ),
+      ),
+    ),
+    "letter-spacing": (
+      property: letter-spacing,
+      class: tracking,
+      css-var: true,
+      css-variable-name: tracking,
+      responsive: true,
+      values: $tracking
+    ),
+    "font-family": map-merge(
+      map-get($utilities, "font-family"),
+      (values: map-merge(
+        map-get(map-get($utilities, "font-family"),
+        "values"), (
+          body: var(--font-body),
+          heading: var(--font-heading),
+        )
+      ))
+    ),
+    "opacity": map-merge(
+      map-get($utilities, "opacity"), 
+        (state: hover)
+    ),
+    "width": map-merge(
+      map-get($utilities, "width"), 
+        (responsive: true)
+    ),
+  )
+);
+
+$utilities: map-merge(
+  $utilities,(
+    "color": map-merge(
+    map-get($utilities, "color"), 
+      (state: hover)
+    ),
+  )
+);
+
+@import "../../node_modules/bootstrap/scss/utilities/api";
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+:root {
+  --font-body: 'Open Sans', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+}

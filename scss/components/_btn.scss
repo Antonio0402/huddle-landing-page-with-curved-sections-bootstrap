@@ -1,0 +1,6 @@
+@use '../abstract/' as *;
+
+.btn--cta:hover {
+  box-shadow: var(--btn-shadow);
+  opacity: 0.5;
+}
