@@ -8,7 +8,7 @@ const purgecss = require("gulp-purgecss");
 
 /* SCSS Task */
 function scssTask() {
-  return src("./scss/**/*.scss")
+  return src("./scss/style.scss")
     .pipe(sass().on("error", sass.logError))
     .pipe(
       purgecss({
@@ -17,12 +17,28 @@ function scssTask() {
     )
     .pipe(postcss([autoprefixer, cssnano()]))
     .pipe(dest("./dist/css/", { sourcemaps: "." }))
-    // .pipe(browserSync.stream());
+    .pipe(browserSync.stream());
+}
+
+/* Browsersync Task */
+function browserSyncServe(cb) {
+  browserSync.init({
+    server: {
+      baseDir: "./dist",
+    },
+  });
+  cb();
+}
+
+/* Browsersync reload when files saved */
+function browserSyncReload(cb) {
+  browserSync.reload();
+  cb();
 }
 
 /* Watch Task */
 function watchTask() {
-  watch(["./scss/**/*.scss", "*.html"], scssTask);
+  watch(["./scss/**/*.scss", ".dist/*.html"], scssTask, browserSyncReload);
 }
 
-exports.default = series(scssTask, watchTask);
+exports.default = series(scssTask, browserSyncServe, watchTask);
